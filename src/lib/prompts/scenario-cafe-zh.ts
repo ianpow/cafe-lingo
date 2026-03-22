@@ -1,0 +1,310 @@
+import type { Scenario } from "@/lib/types";
+
+export const cafeScenarioZh: Scenario = {
+  id: "cafe-ordering-zh",
+  title: "At the Cafe",
+  titleEs: "在咖啡厅",
+  description:
+    "Order coffee and snacks at a cafe in Beijing. Practice basic Mandarin greetings and ordering.",
+  setting: "A modern cafe in Wangfujing, Beijing",
+  language: "zh",
+  turns: [
+    {
+      id: 1,
+      avatarLine: "你好！欢迎光临！请问要点什么？",
+      avatarLineEn: "Hello! Welcome! What would you like to order?",
+      expectedUserPhrase: "你好。我要一杯咖啡。",
+      expectedUserPhraseEn: "Hello. I'd like a cup of coffee.",
+      pronunciationGuide: "Nǐ hǎo. Wǒ yào yī bēi kā fēi.",
+      acceptableVariations: [
+        "你好，我想要一杯咖啡",
+        "我要一杯咖啡",
+        "你好，一杯咖啡",
+        "我想点一杯咖啡",
+      ],
+      vocabulary: [
+        {
+          word: "你好",
+          translation: "hello",
+          pronunciation: "nǐ hǎo",
+          partOfSpeech: "interjection",
+        },
+        {
+          word: "欢迎光临",
+          translation: "welcome (to a shop)",
+          pronunciation: "huān yíng guāng lín",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "我要",
+          translation: "I want/I'd like",
+          pronunciation: "wǒ yào",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "一杯",
+          translation: "one cup (of)",
+          pronunciation: "yī bēi",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "咖啡",
+          translation: "coffee",
+          pronunciation: "kā fēi",
+          partOfSpeech: "noun",
+        },
+      ],
+      grammarNote:
+        "In Chinese, you need a measure word between a number and a noun. '杯' (bēi) is the measure word for cups/glasses: '一杯咖啡' (one cup of coffee).",
+      difficulty: "easy",
+    },
+    {
+      id: 2,
+      avatarLine: "好的！要大杯还是小杯？",
+      avatarLineEn: "OK! Large or small?",
+      expectedUserPhrase: "大杯，谢谢。",
+      expectedUserPhraseEn: "Large, thanks.",
+      pronunciationGuide: "Dà bēi, xiè xiè.",
+      acceptableVariations: [
+        "大杯",
+        "我要大杯",
+        "大杯的，谢谢",
+        "要大杯，谢谢",
+      ],
+      vocabulary: [
+        {
+          word: "大杯",
+          translation: "large cup",
+          pronunciation: "dà bēi",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "小杯",
+          translation: "small cup",
+          pronunciation: "xiǎo bēi",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "还是",
+          translation: "or (in questions)",
+          pronunciation: "hái shì",
+          partOfSpeech: "conjunction",
+        },
+        {
+          word: "谢谢",
+          translation: "thank you",
+          pronunciation: "xiè xiè",
+          partOfSpeech: "interjection",
+        },
+      ],
+      grammarNote:
+        "The 'A还是B' (hái shì) pattern is used for 'or' in questions offering a choice: '大杯还是小杯？' (Large or small?). This is different from '或者' (huò zhě), which is used in statements.",
+      difficulty: "easy",
+    },
+    {
+      id: 3,
+      avatarLine: "要加牛奶吗？",
+      avatarLineEn: "Would you like milk?",
+      expectedUserPhrase: "加牛奶，谢谢。",
+      expectedUserPhraseEn: "With milk, thanks.",
+      pronunciationGuide: "Jiā niú nǎi, xiè xiè.",
+      acceptableVariations: [
+        "要加牛奶",
+        "加牛奶",
+        "要，谢谢",
+        "好的，加牛奶",
+      ],
+      vocabulary: [
+        {
+          word: "加",
+          translation: "to add",
+          pronunciation: "jiā",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "牛奶",
+          translation: "milk",
+          pronunciation: "niú nǎi",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "吗",
+          translation: "question particle",
+          pronunciation: "ma",
+          partOfSpeech: "particle",
+        },
+      ],
+      grammarNote:
+        "Adding '吗' (ma) to the end of a statement turns it into a yes/no question: '要加牛奶' (want to add milk) becomes '要加牛奶吗？' (Do you want to add milk?).",
+      difficulty: "easy",
+    },
+    {
+      id: 4,
+      avatarLine: "好的。还要别的吗？我们有蛋糕和面包。",
+      avatarLineEn: "OK. Anything else? We have cake and bread.",
+      expectedUserPhrase: "一个蛋糕，谢谢。",
+      expectedUserPhraseEn: "One cake, thanks.",
+      pronunciationGuide: "Yī gè dàn gāo, xiè xiè.",
+      acceptableVariations: [
+        "要一个蛋糕",
+        "我要一个蛋糕",
+        "一个蛋糕",
+        "来一个蛋糕，谢谢",
+        "不用了，谢谢",
+      ],
+      vocabulary: [
+        {
+          word: "还要",
+          translation: "also want/anything else",
+          pronunciation: "hái yào",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "别的",
+          translation: "other/else",
+          pronunciation: "bié de",
+          partOfSpeech: "pronoun",
+        },
+        {
+          word: "蛋糕",
+          translation: "cake",
+          pronunciation: "dàn gāo",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "面包",
+          translation: "bread",
+          pronunciation: "miàn bāo",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "一个",
+          translation: "one (general measure word)",
+          pronunciation: "yī gè",
+          partOfSpeech: "phrase",
+        },
+      ],
+      grammarNote:
+        "'个' (gè) is the most common measure word in Chinese and can be used for many general objects: '一个蛋糕' (one cake). When unsure which measure word to use, '个' is often a safe choice.",
+      difficulty: "medium",
+    },
+    {
+      id: 5,
+      avatarLine: "在这里吃还是带走？",
+      avatarLineEn: "Eat here or take away?",
+      expectedUserPhrase: "在这里吃。",
+      expectedUserPhraseEn: "Eat here.",
+      pronunciationGuide: "Zài zhè lǐ chī.",
+      acceptableVariations: [
+        "在这里吃",
+        "这里吃",
+        "在这里",
+        "堂食",
+      ],
+      vocabulary: [
+        {
+          word: "在这里",
+          translation: "here/at this place",
+          pronunciation: "zài zhè lǐ",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "吃",
+          translation: "to eat",
+          pronunciation: "chī",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "带走",
+          translation: "to take away",
+          pronunciation: "dài zǒu",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "堂食",
+          translation: "dine in",
+          pronunciation: "táng shí",
+          partOfSpeech: "noun",
+        },
+      ],
+      grammarNote:
+        "'在' (zài) is a preposition meaning 'at/in'. It comes before the location: '在这里吃' (eat at here). Chinese puts the location before the verb, unlike English which often puts it after.",
+      difficulty: "medium",
+    },
+    {
+      id: 6,
+      avatarLine: "好的！一共三十五块。",
+      avatarLineEn: "OK! That's 35 yuan total.",
+      expectedUserPhrase: "可以用微信支付吗？",
+      expectedUserPhraseEn: "Can I pay with WeChat?",
+      pronunciationGuide: "Kě yǐ yòng wēi xìn zhī fù ma?",
+      acceptableVariations: [
+        "可以微信支付吗",
+        "能用微信吗",
+        "微信可以吗",
+        "用微信付",
+        "可以刷微信吗",
+      ],
+      vocabulary: [
+        {
+          word: "一共",
+          translation: "in total",
+          pronunciation: "yī gòng",
+          partOfSpeech: "adverb",
+        },
+        {
+          word: "三十五",
+          translation: "thirty-five",
+          pronunciation: "sān shí wǔ",
+          partOfSpeech: "number",
+        },
+        {
+          word: "块",
+          translation: "yuan (informal)",
+          pronunciation: "kuài",
+          partOfSpeech: "measure word",
+        },
+        {
+          word: "可以",
+          translation: "can/may",
+          pronunciation: "kě yǐ",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "微信支付",
+          translation: "WeChat Pay",
+          pronunciation: "wēi xìn zhī fù",
+          partOfSpeech: "noun",
+        },
+      ],
+      grammarNote:
+        "'可以...吗？' is a polite way to ask permission: '可以用微信支付吗？' (Can I use WeChat Pay?). '块' (kuài) is the informal word for yuan, similar to saying 'bucks' instead of 'dollars'.",
+      difficulty: "medium",
+    },
+    {
+      id: 7,
+      avatarLine: "可以！谢谢光临！再见！",
+      avatarLineEn: "Yes! Thanks for coming! Goodbye!",
+      expectedUserPhrase: "",
+      expectedUserPhraseEn: "",
+      acceptableVariations: [],
+      vocabulary: [
+        {
+          word: "谢谢光临",
+          translation: "thanks for coming/visiting",
+          pronunciation: "xiè xiè guāng lín",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "再见",
+          translation: "goodbye",
+          pronunciation: "zài jiàn",
+          partOfSpeech: "interjection",
+        },
+      ],
+      grammarNote:
+        "'再见' (zài jiàn) literally means 'again see' — see you again. '光临' (guāng lín) is a formal/polite word for 'visit', commonly used in service contexts like shops and restaurants.",
+      difficulty: "easy",
+    },
+  ],
+};

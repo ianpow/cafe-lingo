@@ -1,0 +1,316 @@
+import type { Scenario } from "@/lib/types";
+
+export const shoppingScenario3: Scenario = {
+  id: "shopping-3",
+  title: "Shopping for Souvenirs — Level 3",
+  titleEs: "De Compras — Nivel 3",
+  description:
+    "Shop at the local market! Bargain, ask about materials, and buy gifts for everyone.",
+  setting: "Mercado de San Miguel, Madrid — an open market",
+  turns: [
+    {
+      id: 1,
+      avatarLine: "Bienvenido al mercado! Tenemos muchos productos. Que busca hoy?",
+      avatarLineEn: "Welcome to the market! We have many products. What are you looking for today?",
+      expectedUserPhrase: "Busco regalos para mi familia. Tiene algo hecho a mano?",
+      expectedUserPhraseEn: "I'm looking for gifts for my family. Do you have anything handmade?",
+      acceptableVariations: [
+        "Tiene productos locales",
+        "Busco algo artesanal",
+        "Quiero comprar regalos hechos a mano",
+        "Tiene algo tipico de aqui",
+        "Busco artesanias para mi familia",
+      ],
+      vocabulary: [
+        {
+          word: "hecho a mano",
+          translation: "handmade",
+          pronunciation: "/e.tʃo a ma.no/",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "familia",
+          translation: "family",
+          pronunciation: "/fa.mi.lja/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "productos",
+          translation: "products",
+          pronunciation: "/pro.duk.tos/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "artesanal",
+          translation: "artisanal / handcrafted",
+          pronunciation: "/ar.te.sa.nal/",
+          partOfSpeech: "adjective",
+        },
+      ],
+      grammarNote:
+        "'Hecho a mano' literally means 'made by hand'. 'Hecho' is the past participle of 'hacer' (to make). It changes with gender: 'hecho' (masculine), 'hecha' (feminine) — 'una bolsa hecha a mano'.",
+      difficulty: "medium",
+    },
+    {
+      id: 2,
+      avatarLine: "Si, todo aqui es artesanal! Tenemos bolsos de cuero, platos de ceramica y abanicos pintados a mano. Le interesa algo?",
+      avatarLineEn: "Yes, everything here is handcrafted! We have leather bags, ceramic plates, and hand-painted fans. Are you interested in something?",
+      expectedUserPhrase: "De que material es este bolso? Es cuero autentico?",
+      expectedUserPhraseEn: "What material is this bag? Is it genuine leather?",
+      acceptableVariations: [
+        "Es de cuero real",
+        "Este bolso es de cuero autentico",
+        "De que esta hecho este bolso",
+        "Es cuero de verdad",
+        "Que tipo de cuero es",
+      ],
+      vocabulary: [
+        {
+          word: "cuero",
+          translation: "leather",
+          pronunciation: "/kwe.ro/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "ceramica",
+          translation: "ceramic",
+          pronunciation: "/θe.ra.mi.ka/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "material",
+          translation: "material",
+          pronunciation: "/ma.te.rjal/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "autentico",
+          translation: "genuine / authentic",
+          pronunciation: "/au.ten.ti.ko/",
+          partOfSpeech: "adjective",
+        },
+      ],
+      grammarNote:
+        "'De que material es?' asks 'What material is it made of?'. 'De' indicates composition: 'de cuero' (of leather), 'de ceramica' (of ceramic). This structure is very common when describing what things are made of.",
+      difficulty: "medium",
+    },
+    {
+      id: 3,
+      avatarLine: "Si, es cuero autentico espanol. Muy buena calidad. Para quien son los regalos?",
+      avatarLineEn: "Yes, it's genuine Spanish leather. Very good quality. Who are the gifts for?",
+      expectedUserPhrase: "Necesito un regalo para mi madre, uno para mi hermano y algo para mis amigos.",
+      expectedUserPhraseEn: "I need a gift for my mother, one for my brother, and something for my friends.",
+      acceptableVariations: [
+        "Para mi madre, mi hermano y mis amigos",
+        "Busco regalos para tres personas",
+        "Necesito varios regalos para mi familia y amigos",
+        "Uno para mi madre y otro para mi hermano",
+        "Quiero algo para mi madre y mi hermano",
+      ],
+      vocabulary: [
+        {
+          word: "madre",
+          translation: "mother",
+          pronunciation: "/ma.dre/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "hermano",
+          translation: "brother",
+          pronunciation: "/er.ma.no/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "amigos",
+          translation: "friends",
+          pronunciation: "/a.mi.gos/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "necesito",
+          translation: "I need",
+          pronunciation: "/ne.θe.si.to/",
+          partOfSpeech: "verb",
+        },
+      ],
+      grammarNote:
+        "'Para' means 'for' when indicating a recipient: 'para mi madre' (for my mother). Possessive adjectives agree in number: 'mi hermano' (my brother, singular) vs. 'mis amigos' (my friends, plural).",
+      difficulty: "medium",
+    },
+    {
+      id: 4,
+      avatarLine: "Perfecto! Para su madre, este plato de ceramica pintado a mano. Para su hermano, un cinturon de cuero. Y para sus amigos, estos llaveros. Quiere que los envuelva para regalo?",
+      avatarLineEn: "Perfect! For your mother, this hand-painted ceramic plate. For your brother, a leather belt. And for your friends, these keychains. Would you like me to gift-wrap them?",
+      expectedUserPhrase: "Si, puede envolver el plato y el cinturon para regalo, por favor?",
+      expectedUserPhraseEn: "Yes, can you gift-wrap the plate and the belt, please?",
+      acceptableVariations: [
+        "Si, envuelvelos para regalo",
+        "Puede envolverlos para regalo",
+        "Si, por favor, para regalo",
+        "Si, los quiero para regalo",
+        "Para regalo, por favor",
+      ],
+      vocabulary: [
+        {
+          word: "envolver",
+          translation: "to wrap",
+          pronunciation: "/em.bol.ber/",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "para regalo",
+          translation: "gift-wrapped / as a gift",
+          pronunciation: "/pa.ra re.ga.lo/",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "cinturon",
+          translation: "belt",
+          pronunciation: "/θin.tu.ron/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "llaveros",
+          translation: "keychains",
+          pronunciation: "/ʎa.be.ros/",
+          partOfSpeech: "noun",
+        },
+      ],
+      grammarNote:
+        "'Para regalo' is the standard phrase for 'gift-wrapped' in Spanish shops. You can simply say 'Para regalo, por favor' and the shopkeeper will understand. 'Envolver' (to wrap) is an o-to-ue stem-changing verb: 'envuelvo, envuelves, envuelve'.",
+      difficulty: "hard",
+    },
+    {
+      id: 5,
+      avatarLine: "Claro! Todo junto son sesenta y cinco euros. Le hago un buen precio.",
+      avatarLineEn: "Of course! All together it's sixty-five euros. I'll give you a good price.",
+      expectedUserPhrase: "Es un poco caro. Me puede hacer un mejor precio si compro todo junto?",
+      expectedUserPhraseEn: "It's a little expensive. Can you give me a better price if I buy everything together?",
+      acceptableVariations: [
+        "Puede bajar un poco el precio",
+        "Es posible un descuento",
+        "Me puede hacer un descuento por todo",
+        "Hay algun descuento por comprar todo",
+        "No me puede rebajar un poco",
+        "Sesenta euros por todo",
+      ],
+      vocabulary: [
+        {
+          word: "caro",
+          translation: "expensive",
+          pronunciation: "/ka.ro/",
+          partOfSpeech: "adjective",
+        },
+        {
+          word: "mejor precio",
+          translation: "better price",
+          pronunciation: "/me.xor pre.θjo/",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "un poco",
+          translation: "a little",
+          pronunciation: "/un po.ko/",
+          partOfSpeech: "phrase",
+        },
+        {
+          word: "junto",
+          translation: "together",
+          pronunciation: "/xun.to/",
+          partOfSpeech: "adverb",
+        },
+      ],
+      grammarNote:
+        "'Mejor' means 'better' and is already comparative — never say 'mas mejor'. Polite bargaining phrases include 'Me puede hacer un mejor precio?' and 'Es un poco caro'. Being indirect and polite is key to bargaining in Spanish markets.",
+      difficulty: "hard",
+    },
+    {
+      id: 6,
+      avatarLine: "Vale, le dejo todo en cincuenta y cinco euros. Buen precio! Quiere que le envie algo por correo a su pais?",
+      avatarLineEn: "OK, I'll leave it all at fifty-five euros. Good price! Would you like me to ship something to your country?",
+      expectedUserPhrase: "Puede enviar el plato de ceramica? Tengo miedo de que se rompa en la maleta.",
+      expectedUserPhraseEn: "Can you ship the ceramic plate? I'm afraid it might break in the suitcase.",
+      acceptableVariations: [
+        "Se puede enviar por correo",
+        "Puede enviarlo a mi pais",
+        "Cuanto cuesta el envio",
+        "Tiene servicio de envio",
+        "Si, quiero enviar el plato por correo",
+        "Puede enviar el plato, por favor",
+      ],
+      vocabulary: [
+        {
+          word: "enviar",
+          translation: "to ship / to send",
+          pronunciation: "/em.bjar/",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "correo",
+          translation: "mail / post",
+          pronunciation: "/ko.re.o/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "romperse",
+          translation: "to break",
+          pronunciation: "/rom.per.se/",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "maleta",
+          translation: "suitcase",
+          pronunciation: "/ma.le.ta/",
+          partOfSpeech: "noun",
+        },
+      ],
+      grammarNote:
+        "'Tener miedo de que' means 'to be afraid that'. It triggers the subjunctive: 'tengo miedo de que se rompa' (I'm afraid it might break). At this level, learning the phrase as a chunk is fine — the subjunctive will come later!",
+      difficulty: "hard",
+    },
+    {
+      id: 7,
+      avatarLine: "Si, hacemos envios internacionales! El envio del plato cuesta ocho euros. En total son sesenta y tres euros. Paga en efectivo o con tarjeta?",
+      avatarLineEn: "Yes, we do international shipping! Shipping the plate costs eight euros. In total it's sixty-three euros. Cash or card?",
+      expectedUserPhrase: "Con tarjeta, por favor. Muchas gracias por todo!",
+      expectedUserPhraseEn: "By card, please. Thank you very much for everything!",
+      acceptableVariations: [
+        "Con tarjeta, gracias",
+        "Tarjeta, por favor",
+        "Pago con tarjeta",
+        "Con tarjeta por favor, muchas gracias",
+        "En efectivo, por favor",
+        "Prefiero pagar con tarjeta",
+      ],
+      vocabulary: [
+        {
+          word: "tarjeta",
+          translation: "card",
+          pronunciation: "/tar.xe.ta/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "efectivo",
+          translation: "cash",
+          pronunciation: "/e.fek.ti.bo/",
+          partOfSpeech: "noun",
+        },
+        {
+          word: "pagar",
+          translation: "to pay",
+          pronunciation: "/pa.gar/",
+          partOfSpeech: "verb",
+        },
+        {
+          word: "envio",
+          translation: "shipping / shipment",
+          pronunciation: "/em.bi.o/",
+          partOfSpeech: "noun",
+        },
+      ],
+      grammarNote:
+        "'Con tarjeta' (by card) and 'en efectivo' (in cash) are the two payment methods you'll hear everywhere. Note the different prepositions: 'con' (with) for card, 'en' (in) for cash. 'Pagar' means 'to pay'.",
+      difficulty: "medium",
+    },
+  ],
+};
