@@ -352,7 +352,7 @@ function LessonContent() {
       {/* Main content */}
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
         {/* Left/Top: Avatar area */}
-        <div className="h-[40vh] lg:h-auto lg:w-3/5 flex flex-col bg-[var(--color-surface)] relative flex-shrink-0">
+        <div className="h-[35vh] lg:h-auto lg:w-3/5 flex flex-col bg-[var(--color-surface)] relative flex-shrink-0">
           <div className="flex-1 min-h-0">
             <TalkingHeadAvatar
               ref={avatarRef}
@@ -430,9 +430,9 @@ function LessonContent() {
         </div>
 
         {/* Right/Bottom: Chat + prompt */}
-        <div className="flex-1 lg:w-2/5 flex flex-col border-t lg:border-t-0 lg:border-l border-[var(--color-surface-light)] overflow-hidden">
+        <div className="flex-1 lg:w-2/5 flex flex-col border-t lg:border-t-0 lg:border-l border-[var(--color-surface-light)] min-h-0">
           {/* Translation toggle */}
-          <div className="flex items-center justify-end p-2 border-b border-[var(--color-surface-light)]">
+          <div className="flex items-center justify-end px-3 py-1.5 border-b border-[var(--color-surface-light)] flex-shrink-0">
             <button
               onClick={() => store.toggleTranslation()}
               className={`text-xs px-3 py-1 rounded-full transition-colors cursor-pointer ${
@@ -445,16 +445,19 @@ function LessonContent() {
             </button>
           </div>
 
-          {/* Chat messages */}
-          <ChatPanel
-            messages={store.conversationHistory}
-            showTranslation={store.showTranslation}
-          />
+          {/* Chat messages — takes all remaining space */}
+          <div className="flex-1 min-h-0">
+            <ChatPanel
+              messages={store.conversationHistory}
+              showTranslation={store.showTranslation}
+            />
+          </div>
 
           {/* Pronunciation feedback */}
           <AnimatePresence>
             {store.latestPronunciation && (
               <motion.div
+                className="flex-shrink-0"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -464,7 +467,7 @@ function LessonContent() {
             )}
           </AnimatePresence>
 
-          {/* Prompt card */}
+          {/* Prompt card — pinned at bottom, compact */}
           {currentTurn && (
             <PromptCard
               turn={currentTurn}
