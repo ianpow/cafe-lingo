@@ -17,12 +17,18 @@ export function RecordButton({
     <div className="flex flex-col items-center gap-2">
       <motion.button
         onClick={onToggle}
+        onTouchEnd={(e) => {
+          // Ensure touch works on mobile — prevent default to avoid ghost clicks
+          e.preventDefault();
+          if (!isDisabled) onToggle();
+        }}
         disabled={isDisabled}
-        className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-colors ${
+        className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-colors touch-manipulation ${
           isRecording
             ? "bg-red-500 hover:bg-red-600"
             : "bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)]"
         } ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+        style={{ zIndex: 50 }}
         whileTap={isDisabled ? {} : { scale: 0.95 }}
         animate={
           isRecording

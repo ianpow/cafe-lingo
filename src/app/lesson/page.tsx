@@ -366,7 +366,11 @@ function LessonContent() {
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-sm">
               <motion.button
                 onClick={handleBeginLesson}
-                className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-lg cursor-pointer"
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  handleBeginLesson();
+                }}
+                className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-lg cursor-pointer touch-manipulation"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 whileHover={{ scale: 1.05 }}
@@ -412,7 +416,7 @@ function LessonContent() {
           </div>
 
           {/* Record button */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+          <div className="absolute bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 z-50">
             <RecordButton
               isRecording={store.isRecording}
               isDisabled={
