@@ -26,6 +26,45 @@ interface LanguageTab {
   categories: ScenarioCategory[];
 }
 
+const ofcomCategory: ScenarioCategory = {
+  icon: "\uD83D\uDCE1",
+  title: "Ofcom",
+  description: "Discuss Ofcom's work and the Online Safety Act at international conferences.",
+  levels: [
+    { id: "ofcom-intro", level: 1, subtitle: "Introducing Ofcom" },
+    { id: "ofcom-osa", level: 2, subtitle: "The Online Safety Act" },
+    { id: "ofcom-roadmap", level: 2, subtitle: "Roadmap to Regulation" },
+    { id: "ofcom-stakeholder", level: 3, subtitle: "Stakeholder Meeting" },
+    { id: "ofcom-panel", level: 3, subtitle: "Conference Panel" },
+  ],
+};
+
+const ofcomCategoryFr: ScenarioCategory = {
+  icon: "\uD83D\uDCE1",
+  title: "Ofcom",
+  description: "Discuss Ofcom's work and the Online Safety Act at international conferences.",
+  levels: [
+    { id: "ofcom-intro-fr", level: 1, subtitle: "Introducing Ofcom" },
+    { id: "ofcom-osa-fr", level: 2, subtitle: "The Online Safety Act" },
+    { id: "ofcom-roadmap-fr", level: 2, subtitle: "Roadmap to Regulation" },
+    { id: "ofcom-stakeholder-fr", level: 3, subtitle: "Stakeholder Meeting" },
+    { id: "ofcom-panel-fr", level: 3, subtitle: "Conference Panel" },
+  ],
+};
+
+const ofcomCategoryZh: ScenarioCategory = {
+  icon: "\uD83D\uDCE1",
+  title: "Ofcom",
+  description: "Discuss Ofcom's work and the Online Safety Act at international conferences.",
+  levels: [
+    { id: "ofcom-intro-zh", level: 1, subtitle: "Introducing Ofcom" },
+    { id: "ofcom-osa-zh", level: 2, subtitle: "The Online Safety Act" },
+    { id: "ofcom-roadmap-zh", level: 2, subtitle: "Roadmap to Regulation" },
+    { id: "ofcom-stakeholder-zh", level: 3, subtitle: "Stakeholder Meeting" },
+    { id: "ofcom-panel-zh", level: 3, subtitle: "Conference Panel" },
+  ],
+};
+
 const languages: LanguageTab[] = [
   {
     code: "es",
@@ -91,6 +130,7 @@ const languages: LanguageTab[] = [
           { id: "office-workplace", level: 1, subtitle: "First day" },
         ],
       },
+      ofcomCategory,
     ],
   },
   {
@@ -115,6 +155,7 @@ const languages: LanguageTab[] = [
           { id: "asking-directions-fr", level: 1, subtitle: "Near the Louvre" },
         ],
       },
+      ofcomCategoryFr,
     ],
   },
   {
@@ -139,6 +180,7 @@ const languages: LanguageTab[] = [
           { id: "asking-directions-zh", level: 1, subtitle: "Near Tiananmen" },
         ],
       },
+      ofcomCategoryZh,
     ],
   },
 ];
@@ -151,6 +193,7 @@ const levelColors = [
 
 export default function Home() {
   const [selectedLang, setSelectedLang] = useState("es");
+  const [avatarGender, setAvatarGender] = useState<"female" | "male">("female");
   const [mounted, setMounted] = useState(false);
   const progressStore = useProgressStore();
   const currentLang = languages.find((l) => l.code === selectedLang) || languages[0];
@@ -203,6 +246,25 @@ export default function Home() {
               </button>
             );
           })}
+        </div>
+
+        {/* Avatar gender selector */}
+        <div className="flex justify-center gap-2 mb-4">
+          <span className="text-sm text-[var(--color-text-muted)] self-center mr-1">Avatar:</span>
+          {(["female", "male"] as const).map((g) => (
+            <button
+              key={g}
+              onClick={() => setAvatarGender(g)}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+                avatarGender === g
+                  ? "bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/20"
+                  : "bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:bg-[var(--color-surface-light)]"
+              }`}
+            >
+              <span>{g === "female" ? "\u2640\uFE0F" : "\u2642\uFE0F"}</span>
+              <span className="capitalize">{g}</span>
+            </button>
+          ))}
         </div>
 
         {/* Stats bar */}
@@ -316,7 +378,7 @@ export default function Home() {
                   return (
                     <Link
                       key={level.id}
-                      href={`/lesson?id=${level.id}`}
+                      href={`/lesson?id=${level.id}&gender=${avatarGender}`}
                       className={`flex items-center gap-3 px-3 md:px-4 py-2.5 rounded-lg text-white text-sm font-medium transition-all hover:scale-[1.02] ${levelColors[level.level - 1]}`}
                     >
                       <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold flex-shrink-0">

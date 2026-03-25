@@ -26,6 +26,7 @@ export interface SpeakAudioData {
 
 interface TalkingHeadAvatarProps {
   modelUrl?: string;
+  gender?: "male" | "female";
   onSpeakStart?: () => void;
   onSpeakEnd?: () => void;
 }
@@ -98,9 +99,10 @@ export const TalkingHeadAvatar = forwardRef<
   TalkingHeadAvatarHandle,
   TalkingHeadAvatarProps
 >(function TalkingHeadAvatar(
-  { modelUrl = "/models/mpfb.glb", onSpeakStart, onSpeakEnd },
+  { modelUrl, gender = "female", onSpeakStart, onSpeakEnd },
   ref
 ) {
+  const resolvedModelUrl = modelUrl || (gender === "male" ? "/models/male.glb" : "/models/female.glb");
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const headRef = useRef<any>(null);
@@ -147,9 +149,9 @@ export const TalkingHeadAvatar = forwardRef<
           ttsEndpoint: null,
           lipsyncModules: ["en", "fr", "de", "fi", "lt"],
           lipsyncLang: "en",
-          cameraView: "mid",
+          cameraView: "head",
   	  cameraDistance: -1,    // closer
-  	  cameraY: -0.1,         // slightly higher
+  	  cameraY: -0.5,         // head-level framing
           cameraRotateEnable: true,
           cameraPanEnable: false,
           cameraZoomEnable: false,
@@ -161,12 +163,12 @@ export const TalkingHeadAvatar = forwardRef<
         });
 
         headRef.current = head;
-        console.log("[TalkingHead] Instance created, loading avatar:", modelUrl);
+        console.log("[TalkingHead] Instance created, loading avatar:", resolvedModelUrl);
 
         await head.showAvatar(
           {
-            url: modelUrl,
-            body: "F",
+            url: resolvedModelUrl,
+            body: gender === "male" ? "M" : "F",
             avatarMood: "neutral",
             lipsyncLang: "en",
           },
@@ -199,7 +201,7 @@ export const TalkingHeadAvatar = forwardRef<
         }
       }
     };
-  }, [modelUrl]);
+  }, [resolvedModelUrl, gender]);
 
   const speakAudio = useCallback((audioData: SpeakAudioData) => {
     const head = headRef.current;
@@ -244,7 +246,7 @@ export const TalkingHeadAvatar = forwardRef<
     }
   }, []);
 
-  const [cameraMode, setCameraMode] = useState<"mid" | "head">("mid");
+  const [cameraMode, setCameraMode] = useState<"mid" | "head">("head");
 
   const toggleCamera = useCallback(() => {
     setCameraMode((prev) => {
@@ -278,9 +280,9 @@ export const TalkingHeadAvatar = forwardRef<
           className="absolute top-3 left-3 z-10 px-3 py-1.5 rounded-full text-xs font-medium
             bg-black/50 hover:bg-black/70 text-white/80 hover:text-white
             backdrop-blur-sm transition-all duration-200 border border-white/10"
-          title={cameraMode === "mid" ? "Switch to close-up" : "Switch to body view"}
+          title={cameraMode === "head" ? "Switch to body view" : "Switch to close-up"}
         >
-          {cameraMode === "mid" ? "👤 Close-up" : "🧍 Body"}
+          {cameraMode === "head" ? "🧍 Body" : "👤 Close-up"}
         </button>
       )}
       {loading && (

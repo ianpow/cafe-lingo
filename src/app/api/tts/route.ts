@@ -2,24 +2,32 @@ import { NextRequest, NextResponse } from "next/server";
 
 const ELEVENLABS_API_URL = "https://api.elevenlabs.io/v1/text-to-speech";
 
-// Voice IDs per language — all warm, friendly female voices
-const VOICE_MAP: Record<string, string> = {
+// Voice IDs per language — warm, friendly voices
+const FEMALE_VOICE_MAP: Record<string, string> = {
   es: "FGY2WhTYpPnrIDTdsKH5", // Laura — Spanish
   fr: "XB0fDUnXU5powFXDhCwa", // Charlotte — French
   zh: "Xb7hH8MSUJpSbSDYk0k2", // Lily — Chinese
+};
+
+const MALE_VOICE_MAP: Record<string, string> = {
+  es: "onwK4e9ZLuTAKqWW03F9", // Daniel — multilingual male
+  fr: "onwK4e9ZLuTAKqWW03F9", // Daniel — multilingual male
+  zh: "onwK4e9ZLuTAKqWW03F9", // Daniel — multilingual male
 };
 
 interface TTSRequest {
   text: string;
   voiceId?: string;
   language?: string;
+  gender?: "male" | "female";
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body: TTSRequest = await request.json();
     const lang = body.language || "es";
-    const voiceId = body.voiceId || VOICE_MAP[lang] || VOICE_MAP.es;
+    const voiceMap = body.gender === "male" ? MALE_VOICE_MAP : FEMALE_VOICE_MAP;
+    const voiceId = body.voiceId || voiceMap[lang] || voiceMap.es;
     const { text } = body;
 
     if (!process.env.ELEVENLABS_API_KEY) {

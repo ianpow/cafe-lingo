@@ -47,6 +47,7 @@ export default function LessonPage() {
 function LessonContent() {
   const searchParams = useSearchParams();
   const scenarioId = searchParams.get("id") || "cafe-ordering";
+  const avatarGender = (searchParams.get("gender") as "male" | "female") || "female";
   const store = useLessonStore();
   const progressStore = useProgressStore();
   const [initialized, setInitialized] = useState(false);
@@ -66,6 +67,7 @@ function LessonContent() {
     listenToExpectedPhrase,
   } = useConversationFlow({
     avatarRef,
+    gender: avatarGender,
   });
 
   // Load scenario
@@ -356,7 +358,7 @@ function LessonContent() {
           <div className="flex-1 min-h-0">
             <TalkingHeadAvatar
               ref={avatarRef}
-              modelUrl="/models/mpfb.glb"
+              gender={avatarGender}
               onSpeakEnd={handleSpeakEnd}
             />
           </div>

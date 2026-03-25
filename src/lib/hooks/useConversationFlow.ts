@@ -21,6 +21,7 @@ export interface AlignmentData {
 
 interface ConversationFlowOptions {
   avatarRef: React.RefObject<TalkingHeadAvatarHandle | null>;
+  gender?: "male" | "female";
 }
 
 function b64ToArrayBuffer(base64: string): ArrayBuffer {
@@ -170,7 +171,7 @@ function ensureAudioContext() {
   }
 }
 
-export function useConversationFlow({ avatarRef }: ConversationFlowOptions) {
+export function useConversationFlow({ avatarRef, gender = "female" }: ConversationFlowOptions) {
   const recorderRef = useRef<AudioRecorder | null>(null);
   const store = useLessonStore();
 
@@ -190,7 +191,7 @@ export function useConversationFlow({ avatarRef }: ConversationFlowOptions) {
         const response = await fetch("/api/tts", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text, language }),
+          body: JSON.stringify({ text, language, gender }),
         });
 
         if (!response.ok) throw new Error("TTS failed");
@@ -252,7 +253,7 @@ export function useConversationFlow({ avatarRef }: ConversationFlowOptions) {
         store.setAvatarSpeaking(false);
       }
     },
-    [store, avatarRef, language]
+    [store, avatarRef, language, gender]
   );
 
   const startAvatarTurn = useCallback(async () => {
@@ -382,7 +383,7 @@ export function useConversationFlow({ avatarRef }: ConversationFlowOptions) {
       const response = await fetch("/api/tts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: turn.expectedUserPhrase, language }),
+        body: JSON.stringify({ text: turn.expectedUserPhrase, language, gender }),
       });
       if (!response.ok) return;
       const data = await response.json();
@@ -405,7 +406,7 @@ export function useConversationFlow({ avatarRef }: ConversationFlowOptions) {
     } catch (error) {
       console.error("Listen error:", error);
     }
-  }, [store, avatarRef, language]);
+  }, [store, avatarRef, language, gender]);
 
   return {
     startAvatarTurn,

@@ -19,6 +19,24 @@ import { cafeScenarioFr } from "@/lib/prompts/scenario-cafe-fr";
 import { directionsFrScenario } from "@/lib/prompts/scenario-directions-fr";
 import { cafeScenarioZh } from "@/lib/prompts/scenario-cafe-zh";
 import { directionsZhScenario } from "@/lib/prompts/scenario-directions-zh";
+// Ofcom — Spanish
+import { ofcomIntroScenario } from "@/lib/prompts/scenario-ofcom-intro";
+import { ofcomOsaScenario } from "@/lib/prompts/scenario-ofcom-osa";
+import { ofcomRoadmapScenario } from "@/lib/prompts/scenario-ofcom-roadmap";
+import { ofcomStakeholderScenario } from "@/lib/prompts/scenario-ofcom-stakeholder";
+import { ofcomPanelScenario } from "@/lib/prompts/scenario-ofcom-panel";
+// Ofcom — French
+import { ofcomIntroFrScenario } from "@/lib/prompts/scenario-ofcom-intro-fr";
+import { ofcomOsaFrScenario } from "@/lib/prompts/scenario-ofcom-osa-fr";
+import { ofcomRoadmapFrScenario } from "@/lib/prompts/scenario-ofcom-roadmap-fr";
+import { ofcomStakeholderFrScenario } from "@/lib/prompts/scenario-ofcom-stakeholder-fr";
+import { ofcomPanelFrScenario } from "@/lib/prompts/scenario-ofcom-panel-fr";
+// Ofcom — Chinese
+import { ofcomIntroZhScenario } from "@/lib/prompts/scenario-ofcom-intro-zh";
+import { ofcomOsaZhScenario } from "@/lib/prompts/scenario-ofcom-osa-zh";
+import { ofcomRoadmapZhScenario } from "@/lib/prompts/scenario-ofcom-roadmap-zh";
+import { ofcomStakeholderZhScenario } from "@/lib/prompts/scenario-ofcom-stakeholder-zh";
+import { ofcomPanelZhScenario } from "@/lib/prompts/scenario-ofcom-panel-zh";
 import type { Scenario } from "@/lib/types";
 
 const scenarios: Record<string, Scenario> = {
@@ -44,6 +62,24 @@ const scenarios: Record<string, Scenario> = {
   // Chinese
   "cafe-ordering-zh": cafeScenarioZh,
   "asking-directions-zh": directionsZhScenario,
+  // Ofcom — Spanish
+  "ofcom-intro": ofcomIntroScenario,
+  "ofcom-osa": ofcomOsaScenario,
+  "ofcom-roadmap": ofcomRoadmapScenario,
+  "ofcom-stakeholder": ofcomStakeholderScenario,
+  "ofcom-panel": ofcomPanelScenario,
+  // Ofcom — French
+  "ofcom-intro-fr": ofcomIntroFrScenario,
+  "ofcom-osa-fr": ofcomOsaFrScenario,
+  "ofcom-roadmap-fr": ofcomRoadmapFrScenario,
+  "ofcom-stakeholder-fr": ofcomStakeholderFrScenario,
+  "ofcom-panel-fr": ofcomPanelFrScenario,
+  // Ofcom — Chinese
+  "ofcom-intro-zh": ofcomIntroZhScenario,
+  "ofcom-osa-zh": ofcomOsaZhScenario,
+  "ofcom-roadmap-zh": ofcomRoadmapZhScenario,
+  "ofcom-stakeholder-zh": ofcomStakeholderZhScenario,
+  "ofcom-panel-zh": ofcomPanelZhScenario,
 };
 
 // GET /api/scenarios — return all scenarios (summary) or a specific one by id
